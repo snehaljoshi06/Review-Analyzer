@@ -1,0 +1,6 @@
+{
+  "name": "ReviewLens – AI Customer Feedback Analyzer",
+  "description": "Turn customer feedback into actionable insights with AI-powered sentiment classification, theme extraction, and interactive analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
