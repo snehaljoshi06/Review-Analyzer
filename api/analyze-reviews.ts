@@ -46,8 +46,20 @@ export default async function handler(req: VercelRequest, res: ServerResponse) {
     return;
   }
 
-  const body = await readJsonBody(req);
-  const result = await handleAnalyzeReviews(body);
-  res.statusCode = result.statusCode;
-  res.end(JSON.stringify(result.body));
+  try {
+    const body = await readJsonBody(req);
+    const result = await handleAnalyzeReviews(body);
+    res.statusCode = result.statusCode;
+    res.end(JSON.stringify(result.body));
+  } catch (err) {
+    console.error('Unhandled error in /api/analyze-reviews:', err);
+    if (!res.writableEnded) {
+      res.statusCode = 500;
+      res.end(
+        JSON.stringify({
+          error: 'An unexpected server error occurred while processing your reviews.',
+        })
+      );
+    }
+  }
 }
