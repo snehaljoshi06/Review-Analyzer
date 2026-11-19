@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from 'http';
-import { handleAnalyzeReviews } from '../lib/analyzeReviews';
+import { handleAnalyzeReviews } from '../lib/analyzeReviews.js';
 
 type VercelRequest = IncomingMessage & {
   body?: unknown;
